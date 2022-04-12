@@ -1,19 +1,23 @@
 import { SwipeableDrawer } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TinderCard from "react-tinder-card";
 import "../styles/DateCards.css";
+import axios from "../axios";
 
 function DateCards() {
-	const [people, setPeople] = useState([
-		{
-			name: "Jason Momoa",
-			url: "https://m.media-amazon.com/images/M/MV5BODJlNWQ4ZjUtYjRhNi00NGQ1LWE3YTItYjRmZGI3YzI4YTEyXkEyXkFqcGdeQXVyMTA2MDIzMDE5._V1_.jpg",
-		},
-		{
-			name: "Beyonce",
-			url: "https://www.toptrendsguide.com/wp-content/uploads/2020/08/Beyonce.jpg",
-		},
-	]);
+	const [people, setPeople] = useState([]);
+
+	useEffect(() => {
+		async function fetchData() {
+			const req = await axios.get("/dateme/cards");
+
+			setPeople(req.data);
+		}
+
+		fetchData();
+	}, []);
+
+	console.log(people);
 
 	const swiped = (direction, nameToDelete) => {
 		console.log("removing: " + nameToDelete);
@@ -36,7 +40,7 @@ function DateCards() {
 						onCardLeftScreen={() => outOfFrame(person.name)}
 					>
 						<div
-							style={{ backgroundImage: `url(${person.url})` }}
+							style={{ backgroundImage: `url(${person.imgUrl})` }}
 							className="card"
 						>
 							<h3>{person.name}</h3>
