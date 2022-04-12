@@ -1,4 +1,5 @@
 import "./App.css";
+import DateCards from "./components/DateCards";
 import Header from "./components/Header";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
 			{/* Header */}
 			<Header />
 			{/* Date Cards */}
-
+			<DateCards />
 			{/* SwipeButtons */}
 		</div>
 	);
