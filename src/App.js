@@ -1,6 +1,7 @@
 import "./App.css";
 import DateCards from "./components/DateCards";
 import Header from "./components/Header";
+import SwipeButtons from "./components/SwipeButtons";
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 			{/* Date Cards */}
 			<DateCards />
 			{/* SwipeButtons */}
+			<SwipeButtons />
 		</div>
 	);
 }
